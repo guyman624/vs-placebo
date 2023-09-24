@@ -28,9 +28,9 @@ jobs:
           pacman -Syu --noconfirm
           pacman -S --noconfirm --needed git gyp mercurial subversion ninja cmake meson \
             ragel yasm nasm asciidoc enca gperf unzip p7zip gcc-multilib clang \
-            python-pip curl openssl
+            python-pip curl openssl python-pipx
 
-          pip3 install rst2pdf mako jsonschema
+          pipx install rst2pdf mako jsonschema
           git config --global user.name "github-actions"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global --add safe.directory $PWD
