@@ -33,6 +33,7 @@ jobs:
           pipx install rst2pdf
           pipx install mako
           pipx install jsonschema
+          pipx ensurepath
           git config --global user.name "github-actions"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global --add safe.directory $PWD
@@ -63,6 +64,7 @@ jobs:
         if: ${{ steps.build_toolchain.outcome == 'success' }}
         continue-on-error: true
         run: |
+          python /__w/vs-placebo/vs-placebo/build64/packages/glslang-static-prefix/src/glslang-static/update_glslang_sources.py
           ninja -C build64 vs-placebo
 
       - name: Packaging vs-placebo
