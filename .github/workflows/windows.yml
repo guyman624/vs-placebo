@@ -46,6 +46,7 @@ jobs:
       - name: Downloading source
         run: |
           cmake -DTARGET_ARCH=x86_64-w64-mingw32 -DALWAYS_REMOVE_BUILDFILES=ON -DSINGLE_SOURCE_LOCATION=$PWD/src_packages -DRUSTUP_LOCATION=$PWD/install_rustup -G Ninja -Bbuild64 -H.
+          sed -i 's,https://gmplib\.org/download/gmp/gmp-6\.2\.1\.tar\.xz,https://ftp\.gnu\.org/gnu/gmp/gmp-6\.2\.1\.tar\.xz,g' build64/build.ninja
           ninja -C build64 download || true
 
       - name: Building toolchain
